@@ -14,9 +14,17 @@ spec:
       labels:
         app: flask-app
     spec:
+      volumes:
+        - name: movie-vol
+          hostPath: 
+            path: /static/videos
+            type: Directory
       containers:
         - name: flask-container
           image: simple-flask:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
+          volumeMounts:
+            - name: movie-vol
+              mountPath: /static/videos

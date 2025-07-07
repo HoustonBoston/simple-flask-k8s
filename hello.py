@@ -27,7 +27,7 @@ def show_video_list():
         if vid.endswith(".mp4"):
             vid_title = vid.split('.')[0]
             links += f'''
-                <a href="{VID_SRC}/{vid_title}">{vid_title}</a><br>    
+                <a href="/videos/{vid_title}">{vid_title}</a><br>    
             '''
     return f'{links}'
 
