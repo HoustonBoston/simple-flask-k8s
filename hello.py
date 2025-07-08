@@ -43,7 +43,7 @@ def serve_video_file(filename):
 @app.route("/videos/<vid_name>")
 def video_page(vid_name):
     video_url = f"{VID_SRC}/{vid_name}.mp4"
-    return (f"""
+    return f"""
     <html>
     <head><title>{vid_name}</title></head>
     <body>
@@ -54,4 +54,4 @@ def video_page(vid_name):
         </video>
     </body>
     </html>
-    """)
+    """
