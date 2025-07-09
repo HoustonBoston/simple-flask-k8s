@@ -44,8 +44,9 @@ def serve_video_file(filename):
     except FileNotFoundError:
         abort(404)
 
+# Send image to src prop in img tag
 @app.route(f"{VID_SRC}/thumbnail/<movie_title>")
-def serve_video_thumbnail(movie_title, timestamp="00:00:01.000", size=f"{int(1920/3)}x{int(1080/3)}"):
+def serve_video_thumbnail(movie_title, timestamp="00:00:01.000", size=f"{1920//4}x{1080//4}"):
     vid_file_full_path = f"{VIDS_DIR}/{movie_title}.mp4"
 
     if os.path.isfile(vid_file_full_path):
