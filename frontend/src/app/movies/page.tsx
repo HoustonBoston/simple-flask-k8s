@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 import Image from "next/image"
 import { useState } from "react";
+import Link from "next/link";
 
 function Page() {
   const movies_url = "http://localhost:8080/movies"
@@ -22,18 +23,16 @@ function Page() {
 
 
   return (
-    <>
-      {/* top navbar */}
-
+    <div>
       {/* movies page header */}
-      <h1 className="text-2xl">Movies</h1>
+      <h1 className="text-2xl pt-15 pl-3 pb-2">Movies</h1>
 
       {/* movies card */}
       <div className="flex-row flex gap-2 pl-2">
         {movies.map((movie_info, index) => {
           const { movie_title, movie_thumbnail } = movie_info
           return (
-            <a href={`/movies/${movie_title}`} key={index}>
+            <Link href={`/movies/${movie_title}`} key={index}>
               <Card className="py-4 px-2 shadow-xl rounded-xl flex flex-col border border-default-200 dark:border-default-100 ">
                 <CardHeader className="pb-0 pt-2 px-4 flex-row items-start">
                   <p className="text-tiny uppercase font-bold">{movie_title}</p>
@@ -49,11 +48,11 @@ function Page() {
                   />
                 </CardBody>
               </Card>
-            </a>
+            </Link>
         )
         })}
       </div>
-    </>
+    </div>
   )
 }
 
