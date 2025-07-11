@@ -40,10 +40,10 @@ function Page() {
           {movies.map((movie_info, index) => {
             const { movie_title, movie_thumbnail } = movie_info
             return (
-              <Link href={`/movies/${movie_title}`} key={index} className="py-1 px-1">
-                <Card className="py-2 px-3 shadow-blue-600 rounded-xl flex flex-col border border-gray-200">
-                  <CardHeader className="pb-0 pt-2 px-4 flex-row items-start">
-                    <p className="text-tiny uppercase font-bold">{movie_title}</p>
+              <Link href={`/movies/${movie_title}`} key={index} className="pb-3 px-1">
+                <Card className="py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
+                  <CardHeader className="pt-2 items-start">
+                    <p className="text-tiny uppercase font-bold text-red-500">{movie_title}</p>
                     <small className="text-default-500"></small>
                   </CardHeader>
                   <CardBody className="overflow-visible py-2">
@@ -51,7 +51,7 @@ function Page() {
                       width={1080/4}
                       height={1920/4}
                       alt="Card background"
-                      className="object-cover rounded-xl"
+                      className="object-cover rounded"
                       src={ "http://localhost:8080"+movie_thumbnail }
                     />
                   </CardBody>

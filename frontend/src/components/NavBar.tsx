@@ -1,16 +1,23 @@
 import Link from "next/link"
+import {Input} from "@heroui/input"
 
 
 function NavBar() {
     return (
-        <header className="shadow shadow-neutral-500 fixed top-0 transition-all duration-100 w-full h-12 bg-neutral-200">
-            <div className="flex flex-row justify-end w-full h-full pr-2 items-center space-x-10 text-red-500">
-                <Link href="/">Home</Link>
-                <Link href="/movies">Movies</Link>
-                <Link href="/login" className="pr-2">Login</Link>
-            </div>
-            <div>
-                <search></search>
+        <header className="shadow shadow-neutral-500 fixed transition-all duration-100 w-full h-12 bg-neutral-200">
+            <div className="relative flex flex-row justify-between w-full h-full items-center text-cyan-600">
+                <div className="">
+                    <Input 
+                        placeholder="Movie"
+                        radius="full"
+                        variant="bordered"
+                    />
+                </div>
+                <div className="space-x-10">
+                    <Link href="/">Home</Link>
+                    <Link href="/movies">Movies</Link>
+                    <Link href="/login" className="pr-2">Login</Link>
+                </div>
             </div>
         </header>
     )
