@@ -5,8 +5,8 @@ import {Input} from "@heroui/input"
 function NavBar() {
     return (
         <header className="shadow shadow-neutral-500 fixed transition-all duration-100 w-full h-12 bg-neutral-200">
-            <div className="relative flex flex-row justify-between w-full h-full items-center text-cyan-600">
-                <div className="">
+            <div className="flex flex-row w-full h-full items-center text-cyan-600">
+                <div className="justify-center">
                     <Input 
                         placeholder="Movie"
                         radius="full"
