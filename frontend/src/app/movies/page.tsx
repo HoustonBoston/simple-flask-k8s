@@ -19,7 +19,7 @@ function Page() {
       .then((data) => setMovies(data.movies))
       .then(() => setLoading(false))
     }
-    , 
+    ,
     []
   )
 

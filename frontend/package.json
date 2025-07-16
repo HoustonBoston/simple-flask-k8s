@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/input": "^2.1.2",
     "@heroui/card": "^2.2.21",
-    "@heroui/input": "^2.4.22",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
