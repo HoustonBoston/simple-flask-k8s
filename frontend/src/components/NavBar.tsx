@@ -9,7 +9,7 @@ function NavBar() {
                     <Input
                         className="focus:outline-none bg-amber-50 rounded-2xl placeholder:text-center placeholder:cursor-auto
                         text-center"
-                        placeholder=" Search movie"
+                        placeholder="Search movie"
                         variant="flushed"
                     />
                 </div>
