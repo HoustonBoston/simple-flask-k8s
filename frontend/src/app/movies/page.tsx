@@ -5,19 +5,36 @@ import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 import Image from "next/image"
 import { useState } from "react";
 import Link from "next/link";
+import Loading from "./loading";
+import { resolve } from "path";
 
 function Page() {
   const movies_url = "http://localhost:8080/movies"
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const fetchMovieData = async () => {
+    let resposnse = await fetch(movies_url)
+    if (resposnse.status == 502) {
+        console.log('server issue')
+        await fetchMovieData()
+    } 
+    else if (resposnse.status != 200) {
+      console.log('response.statusText: ', resposnse.statusText)
+      await new Promise(resolve => setTimeout(resolve, 100))
+      await fetchMovieData()
+    }  
+    else {
+      console.log('movie data returned')
+      resposnse.json().then((data) => setMovies(data.movies)).then(() => setLoading(false))
+    }
+  }
+
+  
+
   useEffect(
     () => {
-      // recieves a json object containing a list of {movies_title, movie_thumbnail}
-      fetch(movies_url)
-        .then((res) => res.json())
-        .then((data) => setMovies(data.movies))
-        .then(() => setLoading(false))
+      fetchMovieData()
     }
     ,
     []
@@ -31,9 +48,7 @@ function Page() {
 
       {/* movies card */}
       {loading ? (
-        <Suspense fallback={<p>Loading movies...</p>}>
-          <h1>Loading movies...</h1>
-        </Suspense>
+        <Loading />
       )
         :
 
@@ -44,11 +59,11 @@ function Page() {
               const { movie_title, movie_thumbnail } = movie_info
               return (
                 <Link href={`/movies/${movie_title}`} key={index} className="pb-3">
-                  <Card className="py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
+                  <Card className="max-h[270px] py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
                     <CardHeader className="pt-2 items-start">
                       <p className="text-tiny uppercase font-bold text-red-500 z-0">{movie_title}</p>
                     </CardHeader>
-                    <CardBody className="overflow-visible py-2">
+                    <CardBody className="py-2 overflow-visible">
                           <Image
                             placeholder="empty"
                             priority
