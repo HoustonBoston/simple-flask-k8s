@@ -7,7 +7,7 @@ function NavBar() {
             <div className="flex justify-between flex-row w-full h-full items-center">
                 <div className="ml-[50%] -translate-x-1/2">
                     <Input
-                        className="focus:outline-none bg-amber-50 rounded-2xl placeholder:text-center placeholder:cursor-auto
+                        className="focus:outline-none w-2x bg-amber-50 rounded-2xl placeholder:text-center placeholder:cursor-auto
                         text-center"
                         placeholder="Search movie"
                         variant="flushed"

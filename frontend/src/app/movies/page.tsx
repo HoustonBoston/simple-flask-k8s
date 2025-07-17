@@ -15,9 +15,9 @@ function Page() {
     () => {
       // recieves a json object containing a list of {movies_title, movie_thumbnail}
       fetch(movies_url)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.movies))
-      .then(() => setLoading(false))
+        .then((res) => res.json())
+        .then((data) => setMovies(data.movies))
+        .then(() => setLoading(false))
     }
     ,
     []
@@ -30,37 +30,42 @@ function Page() {
       <h1 className="text-2xl pl-3 pb-4">Movies</h1>
 
       {/* movies card */}
-      {loading?(
+      {loading ? (
         <Suspense fallback={<p>Loading movies...</p>}>
-        <h1>Loading movies...</h1>
-      </Suspense>
+          <h1>Loading movies...</h1>
+        </Suspense>
       )
-          :      
-        (<div className="flex-wrap flex justify-center">
-          {movies.map((movie_info, index) => {
-            const { movie_title, movie_thumbnail } = movie_info
-            return (
-              <Link href={`/movies/${movie_title}`} key={index} className="pb-3 px-1">
-                <Card className="py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
-                  <CardHeader className="pt-2 items-start">
-                    <p className="text-tiny uppercase font-bold text-red-500">{movie_title}</p>
-                    <small className="text-default-500"></small>
-                  </CardHeader>
-                  <CardBody className="overflow-visible py-2">
-                    <Image 
-                      width={1080/4}
-                      height={1920/4}
-                      alt="Card background"
-                      className="object-cover rounded"
-                      src={ "http://localhost:8080"+movie_thumbnail }
-                    />
-                  </CardBody>
-                </Card>
-              </Link>
-          )
-          })}
-        </div>)
-    }
+        :
+
+        (
+          <div className="flex-wrap flex gap-1 pl-12">
+
+            {movies.map((movie_info, index) => {
+              const { movie_title, movie_thumbnail } = movie_info
+              return (
+                <Link href={`/movies/${movie_title}`} key={index} className="pb-3">
+                  <Card className="py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
+                    <CardHeader className="pt-2 items-start">
+                      <p className="text-tiny uppercase font-bold text-red-500">{movie_title}</p>
+                      <small className="text-default-500"></small>
+                    </CardHeader>
+                    <CardBody className="overflow-visible py-2">
+                      <Image
+                        width={1080 / 4}
+                        height={1920 / 4}
+                        alt="Card background"
+                        className="object-cover rounded"
+                        src={"http://localhost:8080" + movie_thumbnail}
+                      />
+                    </CardBody>
+                  </Card>
+                </Link>
+              )
+            })}
+
+          </div>
+        )
+      }
     </div>
   )
 }
