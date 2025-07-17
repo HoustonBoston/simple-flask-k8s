@@ -3,7 +3,7 @@ import { Input } from "@chakra-ui/input"
 
 function NavBar() {
     return (
-        <header className="shadow shadow-neutral-500 fixed duration-100 w-full h-12 bg-red-200">
+        <header className="shadow shadow-neutral-500 fixed duration-100 w-full h-12 bg-red-200 z-20">
             <div className="flex justify-between flex-row w-full h-full items-center">
                 <div className="ml-[50%] -translate-x-1/2">
                     <Input
