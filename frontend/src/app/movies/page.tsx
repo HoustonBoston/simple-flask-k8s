@@ -50,11 +50,12 @@ function Page() {
                     </CardHeader>
                     <CardBody className="overflow-visible py-2">
                           <Image
+                            placeholder="empty"
                             priority
                             width={270}
                             height={480}
                             alt="Card background"
-                            className="object-cover"
+                            className="object-cover max-h-[270px]"
                             src={"http://localhost:8080" + movie_thumbnail}
                           />
                     </CardBody>
