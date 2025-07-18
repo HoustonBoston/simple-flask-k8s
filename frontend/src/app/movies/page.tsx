@@ -6,7 +6,6 @@ import Image from "next/image"
 import { useState } from "react";
 import Link from "next/link";
 import Loading from "./loading";
-import { resolve } from "path";
 
 function Page() {
   const movies_url = "http://localhost:8080/movies"
