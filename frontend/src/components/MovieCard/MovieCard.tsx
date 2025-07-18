@@ -29,7 +29,7 @@ export default function MovieCard({ movie_thumbnail, movie_title, source }:
                   height={480}
                   alt="Card background"
                   className="object-cover max-h-[270px]"
-                  src={sources.get(source)}
+                  src={sources.get(source)!}
                 />
               </CardBody>
             </Card>
