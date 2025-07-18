@@ -1,11 +1,9 @@
 "use client"
 
-import React, { Suspense, useEffect } from "react";
-import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
-import Image from "next/image"
+import React, { useEffect } from "react";
 import { useState } from "react";
-import Link from "next/link";
 import Loading from "./loading";
+import MovieCard from "@/components/MovieCard/MovieCard";
 
 function Page() {
   const movies_url = "http://localhost:8080/movies"
@@ -57,24 +55,7 @@ function Page() {
             {movies.map((movie_info, index) => {
               const { movie_title, movie_thumbnail } = movie_info
               return (
-                <Link href={`/movies/${movie_title}`} key={index} className="pb-3">
-                  <Card className="max-h[270px] py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
-                    <CardHeader className="pt-2 items-start">
-                      <p className="text-tiny uppercase font-bold text-red-500 z-0">{movie_title}</p>
-                    </CardHeader>
-                    <CardBody className="py-2 overflow-visible">
-                          <Image
-                            placeholder="empty"
-                            priority
-                            width={270}
-                            height={480}
-                            alt="Card background"
-                            className="object-cover max-h-[270px]"
-                            src={"http://localhost:8080" + movie_thumbnail}
-                          />
-                    </CardBody>
-                  </Card>
-                </Link>
+                <MovieCard source="local" movie_thumbnail={movie_thumbnail} movie_title={movie_title} key={index} />
               )
             })}
 
