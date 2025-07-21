@@ -21,10 +21,12 @@ VID_SRC = "/video_file"
 def show_video_list():
     files = os.listdir(VIDS_DIR)
     movies: list[dict] = []
+    movie_count = 0
 
     for vid in files:
         if vid.endswith(".mp4"):
             movie_title = vid.split('.')[0]
+            movie_count += 1
             movies.append(
                 {
                     'movie_title': movie_title,
@@ -33,7 +35,8 @@ def show_video_list():
             )
     
     return jsonify({
-        'movies': movies
+        'movies': movies,
+        'movie_count' : movie_count
     })
 
 # Route to serve raw video files

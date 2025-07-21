@@ -9,6 +9,8 @@ function Page() {
   const movies_url = "http://localhost:8080/movies"
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
+  const [loadedImagesCount, setLoadedImagesCount] = useState(0)
+  const [totalImgCount, setTotalImgCount] = useState(0)
 
   const fetchMovieData = async () => {
     let resposnse = await fetch(movies_url)
@@ -23,12 +25,15 @@ function Page() {
     }  
     else {
       console.log('movie data returned')
-      resposnse.json().then((data) => setMovies(data.movies)).then(() => setLoading(false))
+      resposnse.json().then((data) => {
+        setMovies(data.movies)
+        setTotalImgCount(data.movie_count)
+      })
     }
   }
 
   
-
+  // fetch movie data
   useEffect(
     () => {
       fetchMovieData()
@@ -36,6 +41,14 @@ function Page() {
     ,
     []
   )
+
+  // once all images are loaded
+  useEffect(() => {
+    if (totalImgCount === loadedImagesCount) {
+      setLoading(false)
+      console.log('all images loaded')
+    }
+  }, [loadedImagesCount, totalImgCount])
 
 
   return (
@@ -50,12 +63,12 @@ function Page() {
         :
 
         (
-          <div className="flex-wrap flex gap-1 pl-4">
+          <div className="flex-wrap flex gap-1 ">
 
             {movies.map((movie_info, index) => {
               const { movie_title, movie_thumbnail } = movie_info
               return (
-                <MovieCard source="local" movie_thumbnail={movie_thumbnail} movie_title={movie_title} key={index} />
+                <MovieCard setLoadedImagesCount={setLoadedImagesCount} source="local" movie_thumbnail={movie_thumbnail} movie_title={movie_title} key={index} />
               )
             })}
 
