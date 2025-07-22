@@ -52,9 +52,9 @@ function Page() {
 
 
   return (
-    <div>
+    <div className="mx-auto max-w-screen-xl">
       {/* movies page header */}
-      <h1 className="text-2xl pl-3 pb-4 z-0">Movies</h1>
+      <h1 className="text-2xl pb-4 z-0">Movies</h1>
 
       {/* movies card */}
       {loading ? (
@@ -63,7 +63,7 @@ function Page() {
         :
 
         (
-          <div className="flex-wrap flex gap-1 pl-3">
+          <div className="flex-wrap flex gap-1 grow mx-auto max-w-full">
 
             {movies.map((movie_info, index) => {
               const { movie_title, movie_thumbnail } = movie_info
