@@ -63,7 +63,7 @@ function Page() {
         :
 
         (
-          <div className="flex-wrap flex gap-1 ">
+          <div className="flex-wrap flex gap-1 pl-3">
 
             {movies.map((movie_info, index) => {
               const { movie_title, movie_thumbnail } = movie_info
