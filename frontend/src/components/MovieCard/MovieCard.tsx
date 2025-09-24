@@ -18,7 +18,7 @@ export default function MovieCard({ movie_thumbnail, movie_title, source, setLoa
 
 return (
     <>
-        <Link href={`/movies/${movie_title}`} className="pb-3">
+        <Link href={`http://localhost:8080/video_file/${movie_title}.mp4`} className="pb-3">
             <Card className="py-1 px-3 shadow rounded-xl border border-gray-200 flex flex-col bg-gray-100">
                 <CardHeader className="pt-2">
                     <p className="text-tiny uppercase font-bold text-red-500 z-0">{movie_title}</p>
